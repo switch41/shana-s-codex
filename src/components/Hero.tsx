@@ -46,6 +46,8 @@ export function Hero() {
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start md:justify-start">
             <motion.a
               href="#projects"
+              onClick={playStart}
+              onMouseEnter={playHover}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="group relative inline-flex items-center justify-center overflow-hidden border-2 border-[var(--neon-purple)] bg-[var(--neon-purple)]/10 px-8 py-3 font-pixel text-xs uppercase tracking-widest text-[var(--neon-purple)] text-glow-purple shadow-neon-purple transition-colors hover:bg-[var(--neon-purple)]/25"
