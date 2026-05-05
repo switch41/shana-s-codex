@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import shanaVideo from "@/assets/shana.mp4.asset.json";
 import shanaPoster from "@/assets/shana.png";
+import { playHover, playStart } from "@/lib/sfx";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+    <section
+      onMouseEnter={playHover}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
+    >
       {/* Aura rings */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div
