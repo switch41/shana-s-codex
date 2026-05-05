@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import shana from "@/assets/shana.png";
+import shanaVideo from "@/assets/shana.mp4.asset.json";
+import shanaPoster from "@/assets/shana.png";
 
 export function Hero() {
   return (
@@ -72,16 +73,16 @@ export function Hero() {
           className="relative flex items-center justify-center"
         >
           <div className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.7_0.3_305/0.35),transparent_70%)] blur-2xl" />
-          <motion.img
-            src={shana}
-            alt="Shana — gothic anime pixel-art character with revolver"
-            width={1024}
-            height={1536}
-            className="relative z-10 h-[520px] w-auto select-none animate-pulse-glow md:h-[640px]"
-            style={{ imageRendering: "auto" }}
+          <motion.video
+            src={shanaVideo.url}
+            poster={shanaPoster}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            draggable={false}
           />
           {/* HUD reticle */}
           <div className="pointer-events-none absolute right-0 top-8 hidden flex-col items-end gap-2 font-pixel text-[9px] text-[var(--neon-crimson)] md:flex">
