@@ -81,6 +81,7 @@ export function Hero() {
             muted
             playsInline
             className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
+            style={{ mixBlendMode: "lighten" }}
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
