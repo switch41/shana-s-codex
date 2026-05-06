@@ -7,6 +7,7 @@ import { SkillTree } from "@/components/SkillTree";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Nav } from "@/components/Nav";
+import { Achievements } from "@/components/Achievements";
 
 export const Route = createFileRoute("/")({
   component: Index,
