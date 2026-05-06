@@ -34,6 +34,7 @@ function Index() {
       <div className="pointer-events-none fixed inset-0 z-[1] scanlines opacity-40" />
       <Embers />
       <Nav />
+      <Achievements />
       <div className="relative z-10">
         <Hero />
         <StatsPanel />
