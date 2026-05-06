@@ -7,6 +7,7 @@ import { SkillTree } from "@/components/SkillTree";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Nav } from "@/components/Nav";
+import { Achievements } from "@/components/Achievements";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,6 +34,7 @@ function Index() {
       <div className="pointer-events-none fixed inset-0 z-[1] scanlines opacity-40" />
       <Embers />
       <Nav />
+      <Achievements />
       <div className="relative z-10">
         <Hero />
         <StatsPanel />
