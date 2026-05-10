@@ -106,8 +106,7 @@ export function Hero() {
             playsInline
             className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
             style={{
-              mixBlendMode: "screen",
-              filter: "contrast(1.15) brightness(1.05)",
+              filter: "url(#luma-key) contrast(1.1) brightness(1.05)",
             }}
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
