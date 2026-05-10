@@ -86,7 +86,13 @@ export function Hero() {
             loop
             muted
             playsInline
-            className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
+            className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px] mix-blend-lighten"
+            style={{
+              maskImage:
+                "radial-gradient(ellipse 60% 70% at 50% 45%, black 55%, transparent 95%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 60% 70% at 50% 45%, black 55%, transparent 95%)",
+            }}
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
