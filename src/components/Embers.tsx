@@ -10,7 +10,7 @@ export function Embers({ count = 40 }: { count?: number }) {
         duration: 10 + Math.random() * 15,
         size: 1 + Math.random() * 3,
         drift: -40 + Math.random() * 80,
-        color: Math.random() > 0.6 ? "var(--neon-crimson)" : "var(--neon-purple)",
+        color: Math.random() > 0.5 ? "var(--neon-crimson)" : "var(--neon-blue)",
       })),
     [count],
   );
