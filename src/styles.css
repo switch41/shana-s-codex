@@ -41,48 +41,49 @@
 :root {
   --radius: 0.5rem;
 
-  /* Roguelike dark theme — void black, neon glow */
-  --background: oklch(0.13 0.03 290);
-  --foreground: oklch(0.96 0.02 280);
+  /* Hollow Knight / Dark Souls — desaturated teal, bone-white, candle-orange */
+  --background: oklch(0.16 0.015 220);
+  --foreground: oklch(0.92 0.015 85);
 
-  --card: oklch(0.18 0.04 290 / 0.6);
-  --card-foreground: oklch(0.96 0.02 280);
+  --card: oklch(0.20 0.018 220 / 0.6);
+  --card-foreground: oklch(0.92 0.015 85);
 
-  --popover: oklch(0.16 0.04 290);
-  --popover-foreground: oklch(0.96 0.02 280);
+  --popover: oklch(0.18 0.018 220);
+  --popover-foreground: oklch(0.92 0.015 85);
 
-  --primary: oklch(0.65 0.28 305);            /* electric purple */
-  --primary-foreground: oklch(0.1 0.02 290);
+  --primary: oklch(0.62 0.05 200);
+  --primary-foreground: oklch(0.12 0.01 220);
 
-  --secondary: oklch(0.22 0.05 290);
-  --secondary-foreground: oklch(0.96 0.02 280);
+  --secondary: oklch(0.24 0.02 220);
+  --secondary-foreground: oklch(0.92 0.015 85);
 
-  --muted: oklch(0.2 0.04 290);
-  --muted-foreground: oklch(0.7 0.04 285);
+  --muted: oklch(0.22 0.015 220);
+  --muted-foreground: oklch(0.68 0.02 90);
 
-  --accent: oklch(0.6 0.27 25);                /* crimson */
-  --accent-foreground: oklch(0.98 0.01 280);
+  --accent: oklch(0.72 0.14 55);
+  --accent-foreground: oklch(0.12 0.01 220);
 
-  --destructive: oklch(0.6 0.27 25);
-  --destructive-foreground: oklch(0.98 0.01 280);
+  --destructive: oklch(0.55 0.15 35);
+  --destructive-foreground: oklch(0.95 0.01 85);
 
-  --border: oklch(0.65 0.28 305 / 0.25);
-  --input: oklch(0.25 0.05 290);
-  --ring: oklch(0.65 0.28 305);
+  --border: oklch(0.62 0.05 200 / 0.22);
+  --input: oklch(0.26 0.02 220);
+  --ring: oklch(0.62 0.05 200);
 
-  --neon-purple: oklch(0.7 0.3 305);
-  --neon-crimson: oklch(0.65 0.28 25);
-  --neon-blue: oklch(0.75 0.22 240);
+  /* legacy token names remapped to the new painterly palette */
+  --neon-purple: oklch(0.62 0.05 200);   /* pale teal */
+  --neon-crimson: oklch(0.72 0.14 55);   /* candle orange */
+  --neon-blue: oklch(0.85 0.02 90);      /* bone white */
 
   --font-display: "Cinzel", serif;
   --font-pixel: "Press Start 2P", monospace;
   --font-body: "Rajdhani", sans-serif;
 
-  --gradient-void: radial-gradient(ellipse at center, oklch(0.18 0.05 290) 0%, oklch(0.08 0.02 290) 70%, oklch(0.05 0.01 290) 100%);
+  --gradient-void: radial-gradient(ellipse at center, oklch(0.20 0.02 220) 0%, oklch(0.12 0.012 220) 65%, oklch(0.08 0.008 220) 100%);
   --gradient-neon: linear-gradient(135deg, var(--neon-purple), var(--neon-crimson));
-  --shadow-neon-purple: 0 0 20px oklch(0.7 0.3 305 / 0.6), 0 0 40px oklch(0.7 0.3 305 / 0.3);
-  --shadow-neon-crimson: 0 0 20px oklch(0.65 0.28 25 / 0.6), 0 0 40px oklch(0.65 0.28 25 / 0.3);
-  --shadow-neon-blue: 0 0 20px oklch(0.75 0.22 240 / 0.6), 0 0 40px oklch(0.75 0.22 240 / 0.3);
+  --shadow-neon-purple: 0 0 14px oklch(0.62 0.05 200 / 0.45), 0 0 32px oklch(0.62 0.05 200 / 0.22);
+  --shadow-neon-crimson: 0 0 14px oklch(0.72 0.14 55 / 0.55), 0 0 32px oklch(0.72 0.14 55 / 0.28);
+  --shadow-neon-blue: 0 0 14px oklch(0.85 0.02 90 / 0.4), 0 0 28px oklch(0.85 0.02 90 / 0.2);
 }
 
 @layer base {
