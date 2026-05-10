@@ -78,7 +78,7 @@ export function Hero() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative flex items-center justify-center"
         >
-          <div className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.7_0.3_305/0.35),transparent_70%)] blur-2xl" />
+          <div className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.14_55/0.28),transparent_70%)] blur-2xl" />
           <motion.video
             src={shanaVideo.url}
             poster={shanaPoster}
