@@ -79,40 +79,21 @@ export function Hero() {
           className="relative flex items-center justify-center"
         >
           <div className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.14_55/0.22),transparent_70%)] blur-2xl" />
-          <div className="relative z-10">
-            <motion.video
-              src={shanaVideo.url}
-              poster={shanaPoster}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-[360px] w-auto select-none animate-pulse-glow md:h-[480px] mix-blend-screen"
-              style={{
-                opacity: 0.92,
-                filter:
-                  "saturate(0.55) hue-rotate(150deg) brightness(0.85) contrast(1.05)",
-                maskImage:
-                  "radial-gradient(ellipse 60% 72% at 50% 45%, black 50%, transparent 92%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 60% 72% at 50% 45%, black 50%, transparent 92%)",
-              }}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            />
-            {/* Palette tint overlay — bone + candle warmth */}
-            <div
-              className="pointer-events-none absolute inset-0 mix-blend-color"
-              style={{
-                background:
-                  "linear-gradient(160deg, oklch(0.62 0.05 200 / 0.55), oklch(0.72 0.14 55 / 0.35))",
-                maskImage:
-                  "radial-gradient(ellipse 60% 72% at 50% 45%, black 50%, transparent 92%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 60% 72% at 50% 45%, black 50%, transparent 92%)",
-              }}
-            />
-          </div>
+          <motion.video
+            src={shanaVideo.url}
+            poster={shanaPoster}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
+            style={{
+              mixBlendMode: "screen",
+              filter: "contrast(1.15) brightness(1.05)",
+            }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
           {/* HUD reticle */}
           <div className="pointer-events-none absolute right-0 top-8 hidden flex-col items-end gap-2 font-pixel text-[9px] text-[var(--neon-crimson)] md:flex">
             <span>◆ HP ████████░░</span>
