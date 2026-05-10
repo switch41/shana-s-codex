@@ -13,13 +13,13 @@ export function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div
           className="h-[700px] w-[700px] rounded-full border border-[var(--neon-purple)]/20 animate-spin-slow"
-          style={{ boxShadow: "inset 0 0 80px oklch(0.7 0.3 305 / 0.15)" }}
+          style={{ boxShadow: "inset 0 0 80px oklch(0.62 0.05 200 / 0.15)" }}
         />
         <div className="absolute inset-10 rounded-full border border-[var(--neon-crimson)]/15 animate-spin-slower" />
       </div>
 
       {/* Vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.05_0.02_290/0.8)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.08_0.008_220/0.85)_100%)]" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         {/* Text */}
