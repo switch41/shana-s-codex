@@ -9,6 +9,24 @@ export function Hero() {
       onMouseEnter={playHover}
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
+      {/* Luminance → alpha key (drops the dark video backdrop) */}
+      <svg className="absolute h-0 w-0" aria-hidden>
+        <defs>
+          <filter id="luma-key" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0.2126 0.7152 0.0722 0 0"
+            />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="1.8" intercept="-0.3" />
+            </feComponentTransfer>
+          </filter>
+        </defs>
+      </svg>
+
       {/* Aura rings */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div
@@ -88,8 +106,7 @@ export function Hero() {
             playsInline
             className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
             style={{
-              mixBlendMode: "screen",
-              filter: "contrast(1.15) brightness(1.05)",
+              filter: "url(#luma-key) contrast(1.1) brightness(1.05)",
             }}
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
