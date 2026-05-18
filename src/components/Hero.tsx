@@ -1,16 +1,100 @@
 import { motion } from "framer-motion";
-import shanaVideo from "@/assets/shana.mp4.asset.json";
-import shanaPoster from "@/assets/shana.png";
-import { playHover, playStart } from "@/lib/sfx";
+import { Magnetic } from "./Magnetic";
+import { TiltPortrait } from "./TiltPortrait";
+import { RevealText } from "./RevealText";
 
 export function Hero() {
   return (
-    <section
-      onMouseEnter={playHover}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
-    >
-      {/* Luminance → alpha key (drops the dark video backdrop) */}
-      <svg className="absolute h-0 w-0" aria-hidden>
+    <section id="hero" className="relative flex min-h-[100dvh] items-center overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[oklch(0.11_0.008_270/0.3)] via-transparent to-[oklch(0.11_0.008_270)]" />
+
+      <div className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-10 px-8 py-20 md:grid-cols-[1.3fr_1fr] md:px-12 md:py-0">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mb-5 font-mono text-[11px] tracking-[0.25em] text-[var(--primary)] uppercase"
+          >
+            SDE · AI/ML Engineer
+          </motion.p>
+
+          <RevealText
+            as="h1"
+            className="font-display text-2xl font-black leading-[0.9] tracking-tight text-foreground whitespace-nowrap sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl"
+            stagger={0.04}
+            delay={0.4}
+          >
+            Kushal Parihar
+          </RevealText>
+
+          <div className="mt-1 flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-[var(--primary)]/50 uppercase">
+            <span className="h-px w-4 bg-[var(--primary)]/20" />
+            aka switch41
+            <span className="h-px w-4 bg-[var(--primary)]/20" />
+          </div>
+
+          <RevealText
+            as="p"
+            className="mt-5 max-w-[40ch] font-serif text-lg leading-relaxed text-muted-foreground md:text-xl"
+            stagger={0.02}
+            delay={1.0}
+            mode="words"
+          >
+            AI and full-stack developer from Hyderabad. I build things that work — fast, scrappy,
+            and real. If it's unsolved, I'm interested.
+          </RevealText>
+
+          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
+            <Magnetic strength={0.3}>
+              <motion.a
+                href="#projects"
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 border border-[var(--primary)]/30 bg-[var(--primary)]/8 px-7 py-3 font-display text-xs uppercase tracking-[0.2em] text-[var(--primary)] transition-all hover:bg-[var(--primary)]/15 hover:shadow-gold"
+              >
+                View the work
+              </motion.a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <motion.a
+                href="#contact"
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 border border-transparent px-7 py-3 font-display text-xs uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-foreground"
+              >
+                Get in touch
+              </motion.a>
+            </Magnetic>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="mt-14 flex items-center gap-3 font-serif text-sm italic text-muted-foreground/60"
+          >
+            <span className="h-px w-6 bg-muted-foreground/20" />
+            Open for collaborations
+          </motion.div>
+        </motion.div>
+
+        <TiltPortrait />
+      </div>
+
+      <motion.div
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <span className="font-mono text-[9px] tracking-[0.3em] text-muted-foreground/40 uppercase">
+          Scroll
+        </span>
+      </motion.div>
+
+      <svg className="hidden">
         <defs>
           <filter id="luma-key" colorInterpolationFilters="sRGB">
             <feColorMatrix
@@ -18,116 +102,11 @@ export function Hero() {
               values="1 0 0 0 0
                       0 1 0 0 0
                       0 0 1 0 0
-                      0.2126 0.7152 0.0722 0 0"
+                      -1.5 -1.5 -1.5 4.5 0"
             />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="1.8" intercept="-0.3" />
-            </feComponentTransfer>
           </filter>
         </defs>
       </svg>
-
-      {/* Aura rings */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div
-          className="h-[700px] w-[700px] rounded-full border border-[var(--neon-purple)]/20 animate-spin-slow"
-          style={{ boxShadow: "inset 0 0 80px oklch(0.62 0.05 200 / 0.15)" }}
-        />
-        <div className="absolute inset-10 rounded-full border border-[var(--neon-crimson)]/15 animate-spin-slower" />
-      </div>
-
-      {/* Vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.08_0.008_220/0.85)_100%)]" />
-
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 md:grid-cols-2">
-        {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-center md:text-left"
-        >
-          <div className="mb-4 inline-block font-pixel text-[10px] tracking-[0.3em] text-[var(--neon-blue)] text-glow-blue">
-            ▸ PRESS START
-          </div>
-          <h1 className="font-display text-5xl font-black uppercase leading-[0.95] tracking-wider md:text-7xl lg:text-8xl">
-            <span className="block text-glow-purple">SHANA</span>
-            <span className="mt-2 block text-2xl font-light text-[var(--neon-crimson)] text-glow-crimson md:text-3xl">
-              the Developer
-            </span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-md font-body text-base text-muted-foreground md:mx-0 md:text-lg">
-            A nightbound coder forging interfaces, AI rituals, and pixel-perfect weapons in
-            the void between dawns.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start md:justify-start">
-            <motion.a
-              href="#projects"
-              onClick={playStart}
-              onMouseEnter={playHover}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative inline-flex items-center justify-center overflow-hidden border-2 border-[var(--neon-purple)] bg-[var(--neon-purple)]/10 px-8 py-3 font-pixel text-xs uppercase tracking-widest text-[var(--neon-purple)] text-glow-purple shadow-neon-purple transition-colors hover:bg-[var(--neon-purple)]/25"
-            >
-              ▶ Enter Portfolio
-            </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center border-2 border-[var(--neon-crimson)]/60 bg-transparent px-8 py-3 font-pixel text-xs uppercase tracking-widest text-[var(--neon-crimson)] text-glow-crimson transition-colors hover:bg-[var(--neon-crimson)]/15"
-            >
-              ✦ Summon Me
-            </motion.a>
-          </div>
-
-          <div className="mt-10 flex items-center gap-6 font-pixel text-[9px] tracking-widest text-muted-foreground md:justify-start">
-            <span>LV.99</span>
-            <span className="h-px flex-1 bg-gradient-to-r from-[var(--neon-purple)]/40 to-transparent" />
-            <span>NIGHT 20:00</span>
-          </div>
-        </motion.div>
-
-        {/* Shana */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative flex items-center justify-center"
-        >
-          <div className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.14_55/0.22),transparent_70%)] blur-2xl" />
-          <motion.video
-            src={shanaVideo.url}
-            poster={shanaPoster}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="relative z-10 h-[360px] w-auto select-none animate-pulse-glow md:h-[480px]"
-            style={{
-              filter: "url(#luma-key) contrast(1.1) brightness(1.05)",
-            }}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
-          {/* HUD reticle */}
-          <div className="pointer-events-none absolute right-0 top-8 hidden flex-col items-end gap-2 font-pixel text-[9px] text-[var(--neon-crimson)] md:flex">
-            <span>◆ HP ████████░░</span>
-            <span>◆ MP ██████████</span>
-            <span>◆ XP ████████░░</span>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 font-pixel text-[9px] tracking-widest text-muted-foreground"
-      >
-        ▼ SCROLL TO BEGIN
-      </motion.div>
     </section>
   );
 }
