@@ -73,6 +73,7 @@ export function TiltPortrait() {
             loop
             muted
             playsInline
+            aria-label="Shana character portrait animation"
             className="relative h-[340px] w-auto select-none md:h-[440px]"
             style={{ filter: "url(#luma-key)" }}
           />
