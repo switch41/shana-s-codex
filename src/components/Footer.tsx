@@ -98,6 +98,7 @@ export function Footer() {
             onClick={scrollToTop}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Scroll to top of page"
             className="flex items-center gap-1.5 rounded-full border border-[var(--primary)]/15 bg-[var(--primary)]/8 px-4 py-2 font-mono text-[9px] tracking-wider text-[var(--primary)]/60 transition-all hover:border-[var(--primary)]/25 hover:text-[var(--primary)]"
           >
             <ArrowUp className="h-3 w-3" />
