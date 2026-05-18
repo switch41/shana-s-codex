@@ -37,8 +37,7 @@ export function IntroScreen() {
           className="fixed inset-0 z-[100] flex select-none"
           onClick={dismiss}
         >
-          {/* Video background */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
             <video
               src={shanaVideo}
               poster={shanaPoster}
@@ -51,9 +50,8 @@ export function IntroScreen() {
             />
           </div>
 
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-background/95" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-background/95" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
 
           {/* Scanline overlay */}
           <div
