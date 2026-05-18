@@ -1,60 +1,82 @@
 import { motion } from "framer-motion";
+import { SectionTitle } from "./SectionTitle";
 
 const stats = [
-  { name: "Python", attr: "ATK", value: 92, color: "var(--neon-crimson)" },
-  { name: "React / TS", attr: "SPD", value: 95, color: "var(--neon-purple)" },
-  { name: "AI / ML", attr: "INT", value: 88, color: "var(--neon-blue)" },
-  { name: "Node / API", attr: "DEF", value: 85, color: "var(--neon-purple)" },
-  { name: "UI / UX", attr: "CHR", value: 90, color: "var(--neon-crimson)" },
-  { name: "DevOps", attr: "END", value: 78, color: "var(--neon-blue)" },
+  { name: "Python", attr: "PY", value: 92 },
+  { name: "React / TypeScript", attr: "TS", value: 93 },
+  { name: "AI / ML", attr: "AI", value: 86 },
+  { name: "Node / API", attr: "ND", value: 85 },
+  { name: "UI / UX", attr: "UX", value: 90 },
+  { name: "DevOps", attr: "DO", value: 76 },
 ];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
 
 export function StatsPanel() {
   return (
-    <section id="about" className="relative px-6 py-28">
+    <section id="about" className="relative px-8 py-28 md:py-36">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle kicker="// CHARACTER PROFILE" title="About the Hunter" />
+        <SectionTitle
+          kicker="About"
+          title="Two tracks, one builder"
+          subtitle="Software engineering and machine learning aren't separate worlds — they're two sides of the same craft. He works at the intersection."
+        />
 
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.2fr]">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-[1.2fr_1fr]">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="hud-panel p-8"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-panel rounded-[2rem] p-8 md:p-10"
           >
-            <div className="font-pixel text-[10px] tracking-widest text-[var(--neon-purple)]">
-              ▸ BIO.LOG
+            <div className="font-mono text-[10px] tracking-widest text-[var(--primary)]/60 uppercase">
+              The short version
             </div>
-            <h3 className="mt-3 font-display text-3xl text-glow-purple">Class: Full-Stack Sorcerer</h3>
-            <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground">
-              By day a builder of interfaces, by night a hunter of bugs. I wield TypeScript like
-              a revolver, conjure pixel-perfect UIs, and bind language models with arcane prompts.
-              Five years deep in the void, still leveling up.
+            <p className="mt-5 font-serif text-base leading-relaxed text-muted-foreground">
+              Kushal is a developer from Hyderabad, better known online as switch41. He builds at
+              the intersection of AI and full-stack, turning messy ideas into working prototypes —
+              from healthcare chatbots to production AI tools.
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 font-pixel text-[10px]">
-              <Meta label="LEVEL" value="27" />
-              <Meta label="GUILD" value="INDIE" />
-              <Meta label="REGION" value="EARTH" />
-              <Meta label="WEAPON" value="KEYBOARD" />
+            <p className="mt-4 font-serif text-base leading-relaxed text-muted-foreground">
+              He builds across both tracks, shipping software and models alike. The throughline: he
+              builds things that work, whether it's a React frontend or a PyTorch pipeline. If it's
+              technically weird and hasn't been done yet, that's exactly where he wants to be.
+            </p>
+            <div className="mt-8 grid grid-cols-2 gap-3">
+              <Meta label="Based in" value="Hyderabad" />
+              <Meta label="Tracks" value="SDE + AIML" />
+              <Meta label="Stack" value="React · PyTorch · Edge" />
+              <Meta label="Status" value="Open to work" />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="hud-panel p-8"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-panel rounded-[2rem] p-8 md:p-10"
           >
-            <div className="font-pixel text-[10px] tracking-widest text-[var(--neon-crimson)]">
-              ▸ STAT.SHEET
+            <div className="font-mono text-[10px] tracking-widest text-[var(--primary)]/60 uppercase">
+              Competencies
             </div>
-            <div className="mt-6 space-y-5">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mt-6 space-y-5"
+            >
               {stats.map((s, i) => (
                 <StatBar key={s.name} stat={s} index={i} />
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -64,9 +86,11 @@ export function StatsPanel() {
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-[var(--neon-purple)]/30 bg-[var(--neon-purple)]/5 px-3 py-2">
-      <div className="text-[8px] tracking-widest text-muted-foreground">{label}</div>
-      <div className="mt-1 text-[10px] text-foreground">{value}</div>
+    <div className="rounded-xl border border-[var(--primary)]/10 bg-[var(--primary)]/5 px-4 py-3">
+      <div className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase">
+        {label}
+      </div>
+      <div className="mt-1 font-display text-sm text-foreground">{value}</div>
     </div>
   );
 }
@@ -74,40 +98,26 @@ function Meta({ label, value }: { label: string; value: string }) {
 function StatBar({ stat, index }: { stat: (typeof stats)[number]; index: number }) {
   return (
     <div>
-      <div className="mb-1.5 flex items-baseline justify-between font-pixel text-[10px]">
+      <div className="mb-1.5 flex items-baseline justify-between font-display text-xs tracking-wider">
         <span className="text-foreground">
-          <span style={{ color: stat.color, textShadow: `0 0 8px ${stat.color}` }}>{stat.attr}</span>
-          <span className="ml-3 text-muted-foreground">{stat.name}</span>
+          <span className="font-bold text-[var(--primary)]">{stat.attr}</span>
+          <span className="ml-3 text-muted-foreground/70">{stat.name}</span>
         </span>
-        <span style={{ color: stat.color }}>{stat.value}</span>
+        <span className="font-mono text-[10px] text-muted-foreground">{stat.value}/100</span>
       </div>
-      <div className="relative h-2 overflow-hidden border border-[var(--neon-purple)]/30 bg-black/40">
+      <div className="relative h-1.5 overflow-hidden rounded-full bg-black/40">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${stat.value}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: index * 0.1, ease: "easeOut" }}
-          className="h-full"
+          transition={{ duration: 1.4, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="h-full rounded-full"
           style={{
-            background: `linear-gradient(90deg, ${stat.color}, transparent)`,
-            boxShadow: `0 0 12px ${stat.color}`,
+            background: "linear-gradient(90deg, oklch(0.58 0.08 45), oklch(0.58 0.08 45 / 0.3))",
+            boxShadow: "0 0 6px oklch(0.58 0.08 45 / 0.3)",
           }}
         />
       </div>
-    </div>
-  );
-}
-
-export function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
-  return (
-    <div className="text-center">
-      <div className="font-pixel text-[10px] tracking-[0.3em] text-[var(--neon-blue)] text-glow-blue">
-        {kicker}
-      </div>
-      <h2 className="mt-3 font-display text-4xl font-bold uppercase tracking-wider text-glow-purple md:text-5xl">
-        {title}
-      </h2>
-      <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-transparent via-[var(--neon-purple)] to-transparent" />
     </div>
   );
 }
