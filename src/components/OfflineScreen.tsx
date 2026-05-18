@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export function OfflineScreen() {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center bg-background">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="h-[600px] w-[600px] rounded-full border border-[var(--primary)]/8 animate-spin-slow" />
           <div className="absolute inset-20 rounded-full border border-[var(--primary)]/5 animate-spin-slower" />

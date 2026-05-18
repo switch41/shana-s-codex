@@ -15,8 +15,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-[var(--primary)]/8 px-8 pb-8 pt-16 md:pt-20">
-      {/* Top gradient line */}
-      <div className="absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--primary)]/20 to-transparent" />
+      <div aria-hidden="true" className="absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--primary)]/20 to-transparent" />
 
       <div className="mx-auto max-w-[1400px]">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
