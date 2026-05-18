@@ -8,6 +8,9 @@ export function Hero() {
     <section id="hero" className="relative flex min-h-[100dvh] items-center overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[oklch(0.11_0.008_270/0.3)] via-transparent to-[oklch(0.11_0.008_270)]" />
 
+      <a href="#projects" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:border focus:border-[var(--primary)]">
+        Skip to content
+      </a>
       <div className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-10 px-8 py-20 md:grid-cols-[1.3fr_1fr] md:px-12 md:py-0">
         <motion.div
           initial={{ opacity: 0 }}
