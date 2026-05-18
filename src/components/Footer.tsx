@@ -71,6 +71,7 @@ export function Footer() {
                 href="https://github.com/switch41"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 className="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--primary)]/10 bg-[var(--primary)]/5 text-muted-foreground transition-all hover:border-[var(--primary)]/25 hover:text-foreground"
               >
                 <Github className="h-4 w-4" />
@@ -79,6 +80,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/kushal-parihar/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
                 className="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--primary)]/10 bg-[var(--primary)]/5 text-muted-foreground transition-all hover:border-[var(--primary)]/25 hover:text-foreground"
               >
                 <Linkedin className="h-4 w-4" />

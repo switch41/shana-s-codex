@@ -13,7 +13,7 @@ export function Nav() {
   const bgOpacity = useTransform(scrollY, [0, 200], [0, 1]);
 
   return (
-    <motion.nav className="fixed left-1/2 top-4 z-50 -translate-x-1/2">
+    <motion.nav aria-label="Main navigation" className="fixed left-1/2 top-4 z-50 -translate-x-1/2">
       <motion.div
         style={{
           backgroundColor: useTransform(
