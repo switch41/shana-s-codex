@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ArrowUp, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowUp, Github, Linkedin } from "lucide-react"
 
 const navLinks = [
   { href: "#hero", label: "Home" },
