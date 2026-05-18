@@ -89,15 +89,17 @@ export function Contact() {
                 href="https://github.com/switch41"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 className="transition-colors hover:text-foreground"
               >
                 GitHub
               </a>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
               <a
                 href="https://www.linkedin.com/in/kushal-parihar/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
                 className="transition-colors hover:text-foreground"
               >
                 LinkedIn
