@@ -4,25 +4,31 @@ import { Hero } from "@/components/Hero";
 import { StatsPanel } from "@/components/StatsPanel";
 import { Projects } from "@/components/Projects";
 import { SkillTree } from "@/components/SkillTree";
+import { IntroScreen } from "@/components/IntroScreen";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Nav } from "@/components/Nav";
 import { Achievements } from "@/components/Achievements";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { ChapterIndicator } from "@/components/ChapterIndicator";
+import { Marquee } from "@/components/Marquee";
+import { Footer } from "@/components/Footer";
+import { MeshGradient } from "@/components/MeshGradient";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Shana — Nightbound Developer Portfolio" },
+      { title: "Kushal (switch41) — AI · Full-Stack Developer" },
       {
         name: "description",
         content:
-          "A roguelike-inspired developer portfolio: full-stack engineer, AI alchemist, and pixel-perfect interface hunter.",
+          "Portfolio of Kushal (switch41): AI and full-stack developer from Hyderabad building things that work.",
       },
-      { property: "og:title", content: "Shana — Nightbound Developer Portfolio" },
+      { property: "og:title", content: "Kushal (switch41) — AI · Full-Stack Developer" },
       {
         property: "og:description",
-        content: "Enter the void. Forge interfaces. Hunt bugs till dawn.",
+        content: "AI and full-stack developer from Hyderabad. If it's unsolved, I'm interested.",
       },
     ],
   }),
@@ -30,22 +36,27 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
-      <div className="pointer-events-none fixed inset-0 z-[1] scanlines opacity-40" />
+    <>
+      <IntroScreen />
+      <main className="relative min-h-screen overflow-x-hidden">
+      <div className="pointer-events-none fixed inset-0 z-[1] grain opacity-30" />
+      <ScrollProgress />
+      <MeshGradient />
       <Embers />
       <Nav />
+      <ChapterIndicator />
       <Achievements />
       <div className="relative z-10">
         <Hero />
+        <Marquee />
         <StatsPanel />
         <Projects />
         <SkillTree />
         <Experience />
         <Contact />
-        <footer className="relative px-6 py-10 text-center font-pixel text-[9px] tracking-widest text-muted-foreground">
-          ◆ GAME OVER · INSERT COIN TO CONTINUE · © {new Date().getFullYear()} SHANA ◆
-        </footer>
+        <Footer />
       </div>
     </main>
+    </>
   );
 }
