@@ -1,42 +1,67 @@
 import { motion } from "framer-motion";
-import { SectionTitle } from "./StatsPanel";
+import { SectionTitle } from "./SectionTitle";
 
 type Node = { id: string; label: string; x: number; y: number; tier: 1 | 2 | 3 };
 
 const nodes: Node[] = [
-  { id: "core", label: "CORE", x: 50, y: 50, tier: 1 },
+  { id: "core", label: "Core", x: 50, y: 50, tier: 1 },
   { id: "ts", label: "TypeScript", x: 25, y: 25, tier: 2 },
   { id: "react", label: "React", x: 75, y: 25, tier: 2 },
   { id: "node", label: "Node", x: 25, y: 75, tier: 2 },
   { id: "ai", label: "AI/ML", x: 75, y: 75, tier: 2 },
-  { id: "next", label: "Next", x: 10, y: 10, tier: 3 },
-  { id: "tw", label: "Tailwind", x: 90, y: 10, tier: 3 },
-  { id: "pg", label: "Postgres", x: 10, y: 90, tier: 3 },
-  { id: "lang", label: "LangChain", x: 90, y: 90, tier: 3 },
+  { id: "next", label: "Next.js", x: 12, y: 12, tier: 3 },
+  { id: "tw", label: "Tailwind", x: 88, y: 12, tier: 3 },
+  { id: "pg", label: "Postgres", x: 12, y: 88, tier: 3 },
+  { id: "lang", label: "LangChain", x: 88, y: 88, tier: 3 },
 ];
 
 const links: [string, string][] = [
-  ["core", "ts"], ["core", "react"], ["core", "node"], ["core", "ai"],
-  ["ts", "next"], ["react", "tw"], ["node", "pg"], ["ai", "lang"],
+  ["core", "ts"],
+  ["core", "react"],
+  ["core", "node"],
+  ["core", "ai"],
+  ["ts", "next"],
+  ["react", "tw"],
+  ["node", "pg"],
+  ["ai", "lang"],
 ];
 
-const colorByTier = (t: number) =>
-  t === 1 ? "var(--neon-crimson)" : t === 2 ? "var(--neon-purple)" : "var(--neon-blue)";
+const nodeVariants = {
+  hidden: { opacity: 0, scale: 0 },
+  show: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.4 + i * 0.05,
+      type: "spring" as const,
+      stiffness: 120,
+      damping: 14,
+    },
+  }),
+};
 
 export function SkillTree() {
   const find = (id: string) => nodes.find((n) => n.id === id)!;
 
   return (
-    <section id="skills" className="relative px-6 py-28">
+    <section id="skills" className="relative px-8 py-28 md:py-36">
       <div className="mx-auto max-w-5xl">
-        <SectionTitle kicker="// UPGRADE TREE" title="Skill Constellation" />
+        <SectionTitle
+          kicker="Practice"
+          title="Tools of the trade"
+          subtitle="From React to PyTorch, edge deployment to model training — the full spectrum of what I work with."
+        />
 
-        <div className="relative mx-auto mt-12 aspect-square w-full max-w-2xl">
-          {/* Outer ring */}
-          <div className="absolute inset-0 rounded-full border border-[var(--neon-purple)]/20 animate-spin-slow" />
-          <div className="absolute inset-8 rounded-full border border-[var(--neon-crimson)]/15 animate-spin-slower" />
+        <div className="relative mx-auto mt-16 aspect-square w-full max-w-2xl">
+          <div className="absolute inset-0 rounded-full border border-[var(--primary)]/8" />
+          <div className="absolute inset-16 rounded-full border border-[var(--primary)]/5" />
 
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg
+            className="absolute inset-0 h-full w-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             {links.map(([a, b], i) => {
               const A = find(a);
               const B = find(b);
@@ -47,13 +72,12 @@ export function SkillTree() {
                   y1={A.y}
                   x2={B.x}
                   y2={B.y}
-                  stroke="oklch(0.7 0.3 305 / 0.5)"
-                  strokeWidth={0.3}
-                  strokeDasharray="1 1"
+                  stroke="oklch(0.58 0.08 45 / 0.15)"
+                  strokeWidth={0.4}
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, delay: i * 0.1 }}
+                  transition={{ duration: 1, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 />
               );
             })}
@@ -62,26 +86,29 @@ export function SkillTree() {
           {nodes.map((n, i) => (
             <motion.div
               key={n.id}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              custom={i}
+              variants={nodeVariants}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.08, type: "spring" }}
               className="absolute -translate-x-1/2 -translate-y-1/2"
               style={{ left: `${n.x}%`, top: `${n.y}%` }}
             >
               <div
-                className="group relative flex cursor-pointer items-center justify-center rounded-full border-2 bg-background/80 transition-transform hover:scale-110"
+                className="group relative flex cursor-pointer items-center justify-center rounded-full bg-[oklch(0.14_0.01_270)] transition-transform duration-200 hover:scale-110"
                 style={{
                   width: n.tier === 1 ? 80 : n.tier === 2 ? 60 : 48,
                   height: n.tier === 1 ? 80 : n.tier === 2 ? 60 : 48,
-                  borderColor: colorByTier(n.tier),
-                  boxShadow: `0 0 20px ${colorByTier(n.tier)}, inset 0 0 15px ${colorByTier(n.tier)}44`,
+                  border: "1px solid oklch(0.58 0.08 45 / 0.2)",
                 }}
               >
-                <span
-                  className="font-pixel text-[8px] uppercase tracking-wider"
-                  style={{ color: colorByTier(n.tier), textShadow: `0 0 8px ${colorByTier(n.tier)}` }}
-                >
+                {n.tier === 1 && (
+                  <span
+                    className="absolute inset-0 rounded-full animate-breathe"
+                    style={{ border: "1px solid oklch(0.58 0.08 45 / 0.12)" }}
+                  />
+                )}
+                <span className="font-display text-[8px] uppercase tracking-widest text-[var(--primary)]/80">
                   {n.label}
                 </span>
               </div>
