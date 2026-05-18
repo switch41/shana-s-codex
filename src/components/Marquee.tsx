@@ -33,7 +33,7 @@ export function Marquee() {
       {/* Top divider */}
       <div className="mx-auto h-px w-full max-w-[1400px] divider-gradient" />
 
-      <div ref={ref} className="relative mt-8 overflow-hidden">
+      <div ref={ref} aria-hidden="true" className="relative mt-8 overflow-hidden">
         {/* Edge fades */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-background to-transparent" />
