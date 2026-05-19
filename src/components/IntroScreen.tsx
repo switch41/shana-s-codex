@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import shanaPoster from "@/assets/shana.png"
 import shanaVideo from "@/assets/shana.mp4"
 
 const TITLE = "switch41"
@@ -47,7 +46,6 @@ export function IntroScreen() {
             <video
               ref={videoRef}
               src={shanaVideo}
-              poster={shanaPoster}
               autoPlay
               loop
               muted
