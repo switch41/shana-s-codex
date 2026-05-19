@@ -22,7 +22,7 @@ export function SectionTitle({
       </div>
       <RevealText
         as="h2"
-        className="mt-3 max-w-3xl font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+        className="mt-3 max-w-3xl font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl"
         stagger={0.03}
         mode="chars"
       >

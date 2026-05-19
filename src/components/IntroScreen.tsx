@@ -50,7 +50,7 @@ export function IntroScreen() {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="h-full w-full object-cover opacity-15"
               style={{ filter: "grayscale(0.6) contrast(1.2)" }}
             />
