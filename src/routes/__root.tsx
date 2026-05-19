@@ -74,6 +74,8 @@ function NotFoundComponent() {
   );
 }
 
+const SITE_URL = "https://switch41.online";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -86,17 +88,40 @@ export const Route = createRootRoute({
           "Portfolio of Kushal (switch41): AI and full-stack developer from Hyderabad building things that work.",
       },
       { name: "author", content: "Kushal (switch41)" },
+      { name: "keywords", content: "kushal, parihar, switch41, developer, portfolio, AI, full-stack, Hyderabad" },
+
       { property: "og:title", content: "Kushal's Portfolio" },
       {
         property: "og:description",
         content: "AI and full-stack developer from Hyderabad. If it's unsolved, I'm interested.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Kushal's Portfolio" },
+      { property: "og:image", content: `${SITE_URL}/og-image.svg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Kushal's Portfolio" },
+      {
+        name: "twitter:description",
+        content: "AI and full-stack developer from Hyderabad. If it's unsolved, I'm interested.",
+      },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.svg` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: favicon },
       { rel: "shortcut icon", type: "image/png", href: favicon },
+      { rel: "canonical", href: SITE_URL },
+    ],
+    scripts: [
+      {
+        src: "https://static.cloudflareinsights.com/beacon.min.js",
+        defer: true,
+        "data-cf-beacon": '{"token": "614ee850c2f04e268f6a29af66564393"}',
+      },
     ],
   }),
   shellComponent: RootShell,
