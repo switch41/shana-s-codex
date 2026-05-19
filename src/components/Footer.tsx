@@ -28,7 +28,7 @@ export function Footer() {
                 </span>
               </div>
               <div>
-                <div className="font-display text-sm font-bold tracking-tight text-foreground">
+                <div className="font-display whitespace-nowrap text-sm font-bold tracking-tight text-foreground">
                   Kushal Parihar
                 </div>
                 <div className="font-mono text-[9px] tracking-widest text-[var(--primary)]/50 uppercase">
@@ -91,7 +91,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--primary)]/8 pt-6 md:flex-row">
           <div className="font-serif text-[10px] italic tracking-wide text-muted-foreground/30">
-            &copy; {new Date().getFullYear()} Kushal Parihar &mdash; Built with intent
+            &copy; {new Date().getFullYear()} <span className="whitespace-nowrap">Kushal Parihar</span> &mdash; Built with intent
           </div>
 
           <motion.button
