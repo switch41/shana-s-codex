@@ -72,7 +72,7 @@ export function SkillTree() {
           <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 100 100"
-            preserveAspectRatio="none"
+            preserveAspectRatio="xMidYMid meet"
           >
             {links.map(([a, b], i) => {
               const A = find(a);
@@ -107,10 +107,14 @@ export function SkillTree() {
               style={{ left: `${n.x}%`, top: `${n.y}%` }}
             >
               <div
-                className="group relative flex cursor-pointer items-center justify-center rounded-full bg-[oklch(0.14_0.01_270)] transition-transform duration-200 hover:scale-110"
+                className={`group relative flex cursor-pointer items-center justify-center rounded-full bg-[oklch(0.14_0.01_270)] transition-transform duration-200 hover:scale-110 ${
+                  n.tier === 1
+                    ? "size-16 sm:size-20"
+                    : n.tier === 2
+                      ? "size-12 sm:size-[60px]"
+                      : "size-[38px] sm:size-12"
+                }`}
                 style={{
-                  width: n.tier === 1 ? 80 : n.tier === 2 ? 60 : 48,
-                  height: n.tier === 1 ? 80 : n.tier === 2 ? 60 : 48,
                   border: "1px solid oklch(0.58 0.08 45 / 0.2)",
                 }}
               >
@@ -120,7 +124,7 @@ export function SkillTree() {
                     style={{ border: "1px solid oklch(0.58 0.08 45 / 0.12)" }}
                   />
                 )}
-                <span className="font-display text-[8px] uppercase tracking-widest text-[var(--primary)]/80">
+                <span className="font-display text-[7px] uppercase tracking-widest text-[var(--primary)]/80 sm:text-[8px]">
                   {n.label}
                 </span>
               </div>
