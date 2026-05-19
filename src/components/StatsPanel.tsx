@@ -1,21 +1,14 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 
-const stats = [
-  { name: "Python", attr: "PY", value: 92 },
-  { name: "React / TypeScript", attr: "TS", value: 93 },
-  { name: "AI / ML", attr: "AI", value: 86 },
-  { name: "Node / API", attr: "ND", value: 85 },
-  { name: "UI / UX", attr: "UX", value: 90 },
-  { name: "DevOps", attr: "DO", value: 76 },
+const competencies = [
+  { code: "PY", label: "Python" },
+  { code: "TS", label: "React / TypeScript" },
+  { code: "AI", label: "AI / ML · NLP · LLMs" },
+  { code: "ND", label: "Node / FastAPI / Flask" },
+  { code: "DO", label: "Docker / Git" },
+  { code: "ML", label: "PyTorch / HuggingFace" },
 ];
-
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.08 },
-  },
-};
 
 export function StatsPanel() {
   return (
@@ -66,17 +59,11 @@ export function StatsPanel() {
             <div className="font-mono text-[10px] tracking-widest text-[var(--primary)]/60 uppercase">
               Competencies
             </div>
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-6 space-y-5"
-            >
-              {stats.map((s, i) => (
-                <StatBar key={s.name} stat={s} index={i} />
+            <div className="mt-6 grid gap-3">
+              {competencies.map((c, i) => (
+                <CompetencyCard key={c.code} competency={c} index={i} />
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -95,29 +82,35 @@ function Meta({ label, value }: { label: string; value: string }) {
   );
 }
 
-function StatBar({ stat, index }: { stat: (typeof stats)[number]; index: number }) {
+function CompetencyCard({
+  competency,
+  index,
+}: {
+  competency: (typeof competencies)[number];
+  index: number;
+}) {
   return (
-    <div>
-      <div className="mb-1.5 flex items-baseline justify-between font-display text-xs tracking-wider">
-        <span className="text-foreground">
-          <span className="font-bold text-[var(--primary)]">{stat.attr}</span>
-          <span className="ml-3 text-muted-foreground/70">{stat.name}</span>
-        </span>
-        <span className="font-mono text-[10px] text-muted-foreground">{stat.value}/100</span>
-      </div>
-      <div className="relative h-1.5 overflow-hidden rounded-full bg-black/40">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${stat.value}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.4, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="h-full rounded-full"
-          style={{
-            background: "linear-gradient(90deg, oklch(0.58 0.08 45), oklch(0.58 0.08 45 / 0.3))",
-            boxShadow: "0 0 6px oklch(0.58 0.08 45 / 0.3)",
-          }}
-        />
-      </div>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: -32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{
+        type: "spring",
+        stiffness: 180,
+        damping: 18,
+        delay: index * 0.1,
+      }}
+      className="flex items-center gap-4 rounded-xl border border-[var(--primary)]/10 bg-[var(--primary)]/5 px-4 py-3"
+    >
+      <span className="font-mono text-[10px] font-bold tracking-wider text-[var(--primary)]/40">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="font-mono text-[11px] font-bold tracking-widest text-[var(--primary)]">
+        {competency.code}
+      </span>
+      <span className="font-serif text-xs italic text-muted-foreground">
+        {competency.label}
+      </span>
+    </motion.div>
   );
 }
