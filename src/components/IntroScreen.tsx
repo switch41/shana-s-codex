@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import shanaPoster from "@/assets/shana.png"
 import shanaVideo from "@/assets/shana.mp4"
@@ -8,6 +8,7 @@ const SPLIT = TITLE.split("")
 
 export function IntroScreen() {
   const [show, setShow] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     if (sessionStorage.getItem("intro-seen")) {
@@ -19,6 +20,11 @@ export function IntroScreen() {
       sessionStorage.setItem("intro-seen", "true")
     }, 3800)
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    videoRef.current.play().catch(() => {})
   }, [])
 
   const dismiss = () => {
@@ -37,14 +43,16 @@ export function IntroScreen() {
           className="fixed inset-0 z-[100] flex select-none"
           onClick={dismiss}
         >
-          <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-background">
             <video
+              ref={videoRef}
               src={shanaVideo}
               poster={shanaPoster}
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="h-full w-full object-cover opacity-15"
               style={{ filter: "grayscale(0.6) contrast(1.2)" }}
             />
