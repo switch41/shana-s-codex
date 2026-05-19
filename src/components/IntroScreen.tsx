@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import shanaPoster from "@/assets/shana.png"
 import shanaVideo from "@/assets/shana.mp4"
 
-const TITLE = "SHANA"
+const TITLE = "switch41"
 const SPLIT = TITLE.split("")
 
 export function IntroScreen() {
