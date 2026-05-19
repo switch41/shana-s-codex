@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import shanaVideo from "@/assets/shana.mp4"
 
 const TITLE = "switch41"
 const SPLIT = TITLE.split("")
 
 export function IntroScreen() {
   const [show, setShow] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     if (sessionStorage.getItem("intro-seen")) {
@@ -17,6 +19,11 @@ export function IntroScreen() {
       sessionStorage.setItem("intro-seen", "true")
     }, 3800)
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    videoRef.current.play().catch(() => {})
   }, [])
 
   const dismiss = () => {
@@ -35,6 +42,19 @@ export function IntroScreen() {
           className="fixed inset-0 z-[100] flex select-none bg-background"
           onClick={dismiss}
         >
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-background">
+            <video
+              ref={videoRef}
+              src={shanaVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover opacity-15"
+              style={{ filter: "grayscale(0.6) contrast(1.2)" }}
+            />
+          </div>
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-background/95" />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
 
