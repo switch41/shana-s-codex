@@ -19,11 +19,11 @@ const container: Variants = {
 
 function charVariant(delay: number, stagger: number): Variants {
   return {
-    hidden: { opacity: 0, y: 12, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 12, scale: 0.92 },
     show: (i: number) => ({
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
+      scale: 1,
       transition: {
         delay: delay + i * stagger,
         duration: 0.4,

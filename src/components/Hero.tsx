@@ -98,7 +98,7 @@ export function Hero() {
         </span>
       </motion.div>
 
-      <svg className="hidden">
+      <svg aria-hidden="true" className="absolute h-0 w-0 overflow-hidden">
         <defs>
           <filter id="luma-key" colorInterpolationFilters="sRGB">
             <feColorMatrix
